@@ -10,14 +10,12 @@ async function pressQuestions (){
                 document.getElementById("hlas").textContent = Questions;
                 const response = await fetch (url);
                 const data = await response.json();
-                
                 const Questions  = JSON.stringify(data.results, null, 2);  
                 const correctAnswers = data.results.map(item => item.correct_answer);
                 const incorrectAnswers = data.results.map(item => item.incorrect_answers);
                 console.log(correctAnswers);
                 console.log(incorrectAnswers);
                 console.log(Questions);
-
             } catch (error) {
                 console.error("Error:", error);
             }
