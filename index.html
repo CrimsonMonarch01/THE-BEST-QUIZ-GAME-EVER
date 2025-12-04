@@ -8,12 +8,24 @@
 </head>
 <body>
     <h1 class="name"><b>The Best Quiz EVER!!!!!!</b></h1>
-    <script src="script.js"></script>
+    
     
 
-    <button class="btn1" id="button1">
+    <button class="btn1" id="button1" onclick="pressQuestions()">
         <pre id="hlas"></pre>
-        <a href="https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple">Press button for start!</a>
+        Press button for start!
     </button>
+   <div id="quiz-container"></div>
+    <div id="result" style="margin-top: 30px; font-size: 24px; font-weight: bold;"></div>
+    <!--<div id="templateQuestions" style="display: none;"> ako vyzeraju otazky
+        <span id="description"></span>
+        <label for=""><input type="radio" id="A"></label>
+        <label for=""><input type="radio" id="B"></label>
+        <label for=""><input type="radio" name="" id="C"></label>
+        <label for=""><input type="radio" name="" id="D"></label>
+    </div> -->
+
+   
+     <script src="script.js"></script>
 </body>
 </html>

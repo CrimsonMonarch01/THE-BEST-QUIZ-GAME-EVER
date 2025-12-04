@@ -1,23 +1,38 @@
 const button1 = document.querySelector('#button1');
 const url = "https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple"
 const hlas = document.querySelector('#hlas')
+const zobrazenieAsi = document.querySelector('#quiz-container') //ked to bude fungovat tak huraaa 
 
 async function pressQuestions (){
 
     if (button1){
         button1.addEventListener('click', async () => {
             try {
-                document.getElementById("hlas").textContent = Questions;
+                
                 const response = await fetch (url);
                 const data = await response.json();
-                const Questions  = JSON.stringify(data.results, null, 2);  
+                
+                let vsetko = '' //HTML veci
+
+                data.results.forEach(lietajuciMajko => {
+                    vsetko += `
+                   <div style="display: none;">
+                        <label for=""><input type="radio" name="otazka"> ${lietajuciMajko.correct_answer}</label>
+                            <label for=""><input type="radio" name="Odpoved"> ${lietajuciMajko.incorrect_answer}</label>
+                        <label for=""><input type="radio" name="odpoved"> ${lietajuciMajko.incorrect_answer}</label>
+                            <label for=""><input type="radio" name="odpoveD"> ${lietajuciMajko.incorrect_answer}</label>
+    </div>
+                `
+                });
+
+                zobrazenieAsi.innerHTML = vsetko; 
                /* const correctAnswers = data.results.map(item => item.correct_answer);
                 const incorrectAnswers = data.results.map(item => item.incorrect_answers);
 
 
                 console.log(correctAnswers);
                 console.log(incorrectAnswers);*/
-                console.log(Questions);
+                
             } catch (error) {
                 console.error("Error", error);
             }
@@ -25,6 +40,8 @@ async function pressQuestions (){
 
 }}
 
+
+    
     
 pressQuestions();
 
@@ -36,4 +53,3 @@ pressQuestions();
 
 
 
-//
