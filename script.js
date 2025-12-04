@@ -6,11 +6,11 @@ const zobrazenieAsi = document.querySelector('#quiz-container') //ked to bude fu
 async function pressQuestions (){
 
     if (button1){
-        button1.addEventListener('click', async () => {
+        button1.addEventListener('click', async () => { // tu je async function ktora pocuva ked kliknes a potom sa to pokusi urobit funkciu
             try {
                 
-                const response = await fetch (url);
-                const data = await response.json();
+                const response = await fetch (url); // fetchuje link
+                const data = await response.json(); // caka na response
                 
                 let vsetko = '' //HTML veci
 
@@ -23,7 +23,7 @@ async function pressQuestions (){
                             <label for=""><input type="radio" name="odpoveD"> ${lietajuciMajko.incorrect_answer}</label>
     </div>
                 `
-                });
+                }); // toto mali byt odpovede 
 
                 zobrazenieAsi.innerHTML = vsetko; 
                /* const correctAnswers = data.results.map(item => item.correct_answer);
@@ -34,7 +34,7 @@ async function pressQuestions (){
                 console.log(incorrectAnswers);*/
                 
             } catch (error) {
-                console.error("Error", error);
+                console.error("Error", error); // toto ma catchovat  errori ale nefunguje to ako ma 
             }
         })
 
@@ -43,7 +43,7 @@ async function pressQuestions (){
 
     
     
-pressQuestions();
+pressQuestions(); 
 
    /*fetch("https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple")
   .then(response => response.json())
