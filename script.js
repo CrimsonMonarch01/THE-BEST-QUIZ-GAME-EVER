@@ -19,7 +19,7 @@ async function pressQuestions (){
                 console.log(incorrectAnswers);*/
                 console.log(Questions);
             } catch (error) {
-                console.error("Error:", error);
+                console.error("Error", error);
             }
         })
 
