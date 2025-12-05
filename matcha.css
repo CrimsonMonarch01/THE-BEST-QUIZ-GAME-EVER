@@ -1,178 +1,148 @@
-/* Super pekný kvíz štýl 2025 */
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
+.root{
     box-sizing: border-box;
 }
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-    padding: 40px 20px;
-    color: #333;
-}
-
-#button1 {
+.buttonSubmit {
     display: block;
-    margin: 0 auto 40px;
+    margin: 40px auto 0;
     padding: 16px 40px;
     font-size: 20px;
     font-weight: 600;
     color: white;
-    background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+    background: linear-gradient(45deg, #56ab2f, #3d8b3d);
     border: none;
     border-radius: 50px;
-    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+    box-shadow: 0 8px 20px rgba(86, 171, 47, 0.4);
     cursor: pointer;
-    transition:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 25px rgba(255, 107, 107, 0.5);
-    }
     transition: all 0.3s ease;
 }
-
-#button1:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(255, 107, 107, 0.5);
+:root{
+    --bg-1: #0f1724; /* deep navy */
+    --bg-2: #0b2545; /* darker blue */
+    --card: rgba(255,255,255,0.04);
+    --glass: rgba(255,255,255,0.06);
+    --accent: #7ee787; /* soft green */
+    --accent-2: #6dd3ff; /* soft cyan */
+    --text: #e6eef8;
+    --muted: #b9c8da;
+    --radius: 12px;
+    --max-width: 880px;
 }
 
-#button1:active {
-    transform: translateY(0);
+*,
+*:before,
+*:after{box-sizing:inherit}
+
+html,body{height:100%}
+body{
+    margin:0;
+    min-height:100vh;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    background: linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 100%);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px;
 }
 
-/* Hlavný kontajner */
-#quiz-container {
-    max-width: 900px;
-    margin: 0 auto;
-    display: grid;
-    gap: 25px;
+/* Page container (we don't have a wrapper in HTML, so center the document flow) */
+body > *{
+    width:100%;
+    max-width:var(--max-width);
 }
 
-/* Každá otázka ako pekná karta */
-#quiz-container > div {
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: fadeInUp 0.6s ease backwards;
+.name{
+    font-size: clamp(1.6rem, 3vw + 0.5rem, 3rem);
+    text-align:center;
+    margin:0 0 22px 0;
+    line-height:1.05;
+    letter-spacing:0.6px;
+    color:var(--text);
+    text-shadow: 0 6px 20px rgba(11,37,69,0.45);
 }
 
-#quiz-container > div:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+/* Decorative subheading (optional) */
+.name b{font-weight:700}
+
+/* Create a lightweight centered card for the content */
+body{
+    background-attachment: fixed;
 }
 
-/* Poradie otázok – pekné číslo v kruhu */
-#quiz-container > div::before {
-    counter-increment: question;
+.app-card{
+    margin: 12vh auto 0 auto;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+    backdrop-filter: blur(6px) saturate(120%);
+    border-radius: var(--radius);
+    padding: 42px 28px;
+    box-shadow: 0 8px 40px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
 }
 
-#quiz-container > div .otazka::before {
-    content: counter(question) ".";
-    color: #764ba2;
-    font-weight: 700;
-    margin-right: 8px;
-    font-size: 1.4em;
+/* Primary button */
+.btn1{
+    -webkit-appearance:none;
+    appearance:none;
+    display:inline-block;
+    margin:18px auto 0 auto;
+    font-size:1.125rem;
+    font-weight:600;
+    color: #05222b;
+    background: linear-gradient(90deg,var(--accent) 0%, var(--accent-2) 100%);
+    padding:14px 22px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    transition: transform .16s ease, box-shadow .16s ease, opacity .12s ease;
+    box-shadow: 0 8px 24px rgba(7,25,40,0.35);
+    text-align:center;
 }
 
-/* Otázka */
+.btn1:hover{transform:translateY(-3px); box-shadow:0 14px 40px rgba(7,25,40,0.45)}
+.btn1:active{transform:translateY(-1px)}
+.btn1:focus{outline:3px solid rgba(126,231,135,0.18); outline-offset:4px}
+
+/* Anchor inside the button: keep it accessible and reset default anchor styles */
+.btn1 a{
+    color:inherit;
+    text-decoration:none;
+    display:inline-block;
+    width:100%;
+}
+
+/* Small helper text */
+.muted{color:var(--muted); font-size:0.95rem; text-align:center; margin-top:8px}
+
+/* Responsive layout tweaks */
+@media (max-width:640px){
+    .app-card{padding:28px 18px; margin-top:14vh}
+    .name{margin-bottom:14px}
+    .btn1{padding:12px 18px; font-size:1rem}
+}
+
+@media (max-width:420px){
+    body{padding:18px}
+    .app-card{margin-top:10vh}
+    .name{font-size:1.4rem}
+}
+
+/* Utility: center-block (if you want to wrap content in a centered small column) */
+.center-block{max-width:720px; margin:0 auto}
+
 .otazka {
-    font-size: 22px;
-    font-weight: 600;
-    color: #2d1b69;
-    margin-bottom: 24px;
-    line-height: 1.4;
-    display: block;
+
+
+
 }
 
-/* Odpovede – štýl ako veľkých tlačidiel */
 .odpoved {
-    display: block;
-    margin-bottom: 14px;
-    padding: 16px 20px;
-    background: #f8f9ff;
-    border: 2px solid #e0e7ff;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 17px;
-    position: relative;
-    overflow: hidden;
-}
 
-.odpoved:hover {
-    background: #eef2ff;
-    border-color: #764ba2;
-    transform: translateX(8px);
-}
 
-.odpoved input[type="radio"] {
-    opacity: 0;
-    position: absolute;
-    left: -9999px;
-}
-
-/* Custom radio button – pekný fialový kruh */
-.odpoved::before {
-    content: "";
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    border: 3px solid #ccc;
-    border-radius: 50%;
-    margin-right: 15px;
-    vertical-align: middle;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-}
-
-.odpoved input[type="radio"]:checked + &::before {
-    border-color: #764ba2;
-    background: #764ba2;
-    box-shadow: inset 0 0 0 5px white;
-}
-
-.odpoved input[type="radio"]:checked + & {
-    background: #f0e8ff;
-    border-color: #764ba2;
-    color: #5a2d9e;
-    font-weight: 500;
-}
-
-/* Animácia pri načítaní */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-#quiz-container > div:nth-child(1) { animation-delay: 0.1s; }
-#quiz-container > div:nth-child(2) { animation-delay: 0.2s; }
-#quiz-container > div:nth-child(3) { animation-delay: 0.3s; }
-/* ... a tak ďalej až po 10 */
-
-/* Responsívne */
-@media (max-width: 600px) {
-    .otazka {
-        font-size: 19px;
-    }
     
-    #quiz-container > div {
-        padding: 20px;
-    }
-    
-    .odpoved {
-        padding: 14px 16px;
-        font-size: 16px;
-    }
 }
+
+
+
+
+/* End of stylesheet */

@@ -2,6 +2,9 @@ const button1 = document.querySelector('#button1');
 const url = "https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple"
 const hlas = document.querySelector('#hlas')
 const zobrazenieAsi = document.querySelector('#quiz-container') //ked to bude fungovat tak huraaa 
+const checkAndsend = document.querySelector('#send')
+let correct_answer = ''
+let incorrect_answers = ''
 
 
 async function pressQuestions (){
@@ -20,6 +23,10 @@ async function pressQuestions (){
 
                     return
                 }
+                    
+
+                
+
 
                 data.results.forEach(ans => {
                     vsetko += `
@@ -53,6 +60,22 @@ async function pressQuestions (){
         })
 
 }}
+
+function sendIt(){
+    checkAndsend.addEventListener('click', () => {
+        console.log("clicked")
+    })
+    if (checkAndsend === correct_answer){
+        console.log("correct")    
+
+        
+    }else {
+        (checkAndsend === incorrect_answers)
+            console.log("wrong")
+    }
+return
+
+}
 
 /*  <label for=""><input type="radio" name="Odpoved"> ${ans.incorrect_answer}</label>
                         <label for=""><input type="radio" name="odpoved"> ${ans.incorrect_answer}</label>
