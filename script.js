@@ -3,6 +3,7 @@ const url = "https://opentdb.com/api.php?amount=10&category=20&difficulty=medium
 const hlas = document.querySelector('#hlas')
 const zobrazenieAsi = document.querySelector('#quiz-container') //ked to bude fungovat tak huraaa 
 
+
 async function pressQuestions (){
 
     if (button1){
@@ -14,18 +15,31 @@ async function pressQuestions (){
                 
                 let vsetko = '' //HTML veci
 
-                data.results.forEach(lietajuciMajko => {
+                if (!data.results) {
+                    console.error("no data")
+
+                    return
+                }
+
+                data.results.forEach(ans => {
                     vsetko += `
-                   <div style="display: none;">
-                        <label for=""><input type="radio" name="otazka"> ${lietajuciMajko.correct_answer}</label>
-                            <label for=""><input type="radio" name="Odpoved"> ${lietajuciMajko.incorrect_answer}</label>
-                        <label for=""><input type="radio" name="odpoved"> ${lietajuciMajko.incorrect_answer}</label>
-                            <label for=""><input type="radio" name="odpoveD"> ${lietajuciMajko.incorrect_answer}</label>
+                   <div>
+                    <label for=""><name="otazka" class=" otazka"> ${ans.question}</label>
+                    <label for=""><input type="radio" name="otazka"  class=" odpoved"> ${ans.correct_answer}</label>
+                    <label for=""><input type="radio" name="otazka"  class=" odpoved"> ${ans.incorrect_answers[0]}</label>
+                    <label for=""><input type="radio" name="otazka"  class=" odpoved"> ${ans.incorrect_answers[1]}</label>
+                    <label for=""><input type="radio" name="otazka"  class=" odpoved"> ${ans.incorrect_answers[2]}</label>
+
+                    
     </div>
                 `
-                }); // toto mali byt odpovede 
+                
 
-                zobrazenieAsi.innerHTML = vsetko; 
+
+                
+                zobrazenieAsi.innerHTML = vsetko;
+                }); // toto mali byt odpovede 
+ 
                /* const correctAnswers = data.results.map(item => item.correct_answer);
                 const incorrectAnswers = data.results.map(item => item.incorrect_answers);
 
@@ -40,7 +54,9 @@ async function pressQuestions (){
 
 }}
 
-
+/*  <label for=""><input type="radio" name="Odpoved"> ${ans.incorrect_answer}</label>
+                        <label for=""><input type="radio" name="odpoved"> ${ans.incorrect_answer}</label>
+                            <label for=""><input type="radio" name="odpoveD"> ${ans.incorrect_answer}</label>*/
     
     
 pressQuestions(); 
