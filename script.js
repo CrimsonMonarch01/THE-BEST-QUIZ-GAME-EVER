@@ -98,7 +98,7 @@ function sendIt(){ // posleanie odpovedi
                         <label for=""><input type="radio" name="odpoved"> ${ans.incorrect_answer}</label>
                             <label for=""><input type="radio" name="odpoveD"> ${ans.incorrect_answer}</label>*/
     
-    
+    sendIt()
 pressQuestions(); 
 
    /*fetch("https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple")
